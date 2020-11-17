@@ -15,16 +15,18 @@ Route::get('/', function () {
     return view('templates.master');
 });
 
-Route::get('/pertanyaan', 'PertanyaanController@index');
+// Route::get('/pertanyaan', 'PertanyaanController@index');
 
-Route::get('/pertanyaan/tambah', 'PertanyaanController@create');
+// Route::get('/pertanyaan/tambah', 'PertanyaanController@create');
 
-Route::post('/pertanyaan', 'PertanyaanController@insert');
+// Route::post('/pertanyaan', 'PertanyaanController@insert');
 
-Route::get('/pertanyaan/{questions_id}', 'PertanyaanController@show');
+// Route::get('/pertanyaan/{questions_id}', 'PertanyaanController@show');
 
-Route::delete('/pertanyaan/{questions_id}', 'PertanyaanController@destroy');
+// Route::delete('/pertanyaan/{questions_id}', 'PertanyaanController@destroy');
 
-Route::get('/pertanyaan/{questions_id}/edit', 'PertanyaanController@edit');
+// Route::get('/pertanyaan/{questions_id}/edit', 'PertanyaanController@edit');
 
-Route::put('/pertanyaan/{questions_id}', 'PertanyaanController@update');
+// Route::put('/pertanyaan/{questions_id}', 'PertanyaanController@update');
+
+Route::resource('pertanyaan', 'QuestionsController');

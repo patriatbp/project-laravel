@@ -39,7 +39,7 @@
             @enderror
 
         </div>
-        <button type="submit" class="btn btn-primary">Tambah</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
 @endsection
 

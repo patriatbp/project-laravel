@@ -1,7 +1,7 @@
 @extends('templates.master')
 
 @section('content')
-    <a href="/pertanyaan/tambah" class="btn btn-primary" style="margin-bottom: 10px">Tanyakan Sesuatu</a>
+    <a href="/pertanyaan/create" class="btn btn-primary" style="margin-bottom: 10px">Tanyakan Sesuatu</a>
     <table class="table">
         <thead class="thead-light">
         <tr>
