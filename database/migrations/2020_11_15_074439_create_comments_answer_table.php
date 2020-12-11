@@ -17,10 +17,10 @@ class CreateCommentsAnswerTable extends Migration
             $table->bigIncrements('id');
             $table->string('isi');
             $table->date('tanggal_dibuat');
-            $table->unsignedBigInteger('id_profile');
-            $table->foreign('id_profile')->references('id')->on('profiles');
-            $table->unsignedBigInteger('id_pertanyaan');
-            $table->foreign('id_pertanyaan')->references('id')->on('answers');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('pertanyaan_id');
+            $table->foreign('pertanyaan_id')->references('id')->on('answers');
             $table->timestamps();
         });
     }

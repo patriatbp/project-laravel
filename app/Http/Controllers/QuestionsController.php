@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Question;
+use App\Answer;
+use Auth;
 
 class QuestionsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +55,8 @@ class QuestionsController extends Controller
             'judul'=>$request->judul,
             'isi'=>$request->isi,
             'tanggal_dibuat'=>$request->tanggal_dibuat,
-            'tanggal_diperbarui'=>$request->tanggal_diperbarui
+            'tanggal_diperbarui'=>$request->tanggal_diperbarui,
+            'user_id' => Auth::id()
         ]);
 
         return redirect('/pertanyaan');
@@ -63,7 +71,10 @@ class QuestionsController extends Controller
     public function show($id)
     {
         $questions = Question::find($id);
-        return view('questions.show', compact('questions'));
+
+        $answer = $questions->jawaban;
+        
+        return view('questions.show', compact('questions','answer'));
     }
 
     /**

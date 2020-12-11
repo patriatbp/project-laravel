@@ -18,8 +18,10 @@ class CreateAnswersTable extends Migration
             $table->string('isi');
             $table->date('tanggal_dibuat');
             $table->date('tanggal_diperbarui');
-            $table->unsignedBigInteger('id_profile');
-            $table->foreign('id_profile')->references('id')->on('profiles');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('pertanyaan_id');
+            $table->foreign('pertanyaan_id')->references('id')->on('questions');
             $table->timestamps();
         });
     }

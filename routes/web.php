@@ -30,3 +30,10 @@ Route::get('/', function () {
 // Route::put('/pertanyaan/{questions_id}', 'PertanyaanController@update');
 
 Route::resource('pertanyaan', 'QuestionsController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('user', 'UserController');
+
+Route::resource('jawaban', 'AnswerController');

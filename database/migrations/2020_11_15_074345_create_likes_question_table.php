@@ -16,10 +16,10 @@ class CreateLikesQuestionTable extends Migration
         Schema::create('likes_question', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->tinyInteger('like');
-            $table->unsignedBigInteger('id_profile');
-            $table->foreign('id_profile')->references('id')->on('profiles');
-            $table->unsignedBigInteger('id_jawaban');
-            $table->foreign('id_jawaban')->references('id')->on('questions');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('jawaban_id');
+            $table->foreign('jawaban_id')->references('id')->on('questions');
             $table->timestamps();
         });
     }
