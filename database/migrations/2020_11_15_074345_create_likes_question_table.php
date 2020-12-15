@@ -17,9 +17,9 @@ class CreateLikesQuestionTable extends Migration
             $table->bigIncrements('id');
             $table->tinyInteger('like');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('jawaban_id');
-            $table->foreign('jawaban_id')->references('id')->on('questions');
+            $table->foreign('jawaban_id')->references('id')->on('questions')->onDelete('cascade');
             $table->timestamps();
         });
     }

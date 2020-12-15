@@ -3,24 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Question;
-use App\Answer;
+use DB;
+use App\User;
 use Auth;
 
-class AnswerController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
+
+    public function index()
     {
-        $questions = Questions::find($id);
+        $user = Auth::id();
 
-        $answer = $questions->jawaban;
-        return view('questions.show', compact('answer'));
-
+        $profile = \DB::table('profiles')->where('user_id', $user)->first();
+        return view('profiles.index', compact('profile'));
     }
 
     /**
@@ -30,7 +36,7 @@ class AnswerController extends Controller
      */
     public function create()
     {
-        
+        return view('profiles.create');
     }
 
     /**
@@ -41,13 +47,14 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        $answer = Answer::create([
-            "isi" => $request["isi_jawaban"],
-            "user_id"=> Auth::id(),
-            "question_id"=> $request["questions_id"]
+        $profile = Profile::create([
+            "nama_lengkap" => $request["nama_lengkap"],
+            "email" => $request["email"],
+            "photo" => $request["photo"],
+            "user_id" => Auth::id()
         ]);
 
-        return redirect()->action('QuestionsController@show', ['pertanyaan' => $request["questions_id"]]);
+        return redirect('/profile');
     }
 
     /**
@@ -90,11 +97,8 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Request $request)
+    public function destroy($id)
     {
-        $answer = Answer::find($id);
-        $answer->delete();
-
-        return redirect()->action('QuestionsController@show', ['pertanyaan' => $request["questions_id"]]);
+        //
     }
 }

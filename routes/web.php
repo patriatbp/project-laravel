@@ -37,3 +37,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('user', 'UserController');
 
 Route::resource('jawaban', 'AnswerController');
+
+Route::resource('profile', 'ProfileController');

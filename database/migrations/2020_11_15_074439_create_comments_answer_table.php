@@ -18,9 +18,9 @@ class CreateCommentsAnswerTable extends Migration
             $table->string('isi');
             $table->date('tanggal_dibuat');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('pertanyaan_id');
-            $table->foreign('pertanyaan_id')->references('id')->on('answers');
+            $table->foreign('pertanyaan_id')->references('id')->on('answers')->onDelete('cascade');
             $table->timestamps();
         });
     }

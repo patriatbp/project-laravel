@@ -19,9 +19,9 @@ class CreateAnswersTable extends Migration
             $table->date('tanggal_dibuat');
             $table->date('tanggal_diperbarui');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('pertanyaan_id');
-            $table->foreign('pertanyaan_id')->references('id')->on('questions');
+            $table->foreign('pertanyaan_id')->references('id')->on('questions')->onDelete('cascade');
             $table->timestamps();
         });
     }

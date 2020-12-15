@@ -20,7 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->date('tanggal_dibuat');
             $table->date('tanggal_diperbarui');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

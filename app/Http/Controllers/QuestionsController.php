@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Question;
 use App\Answer;
+use App\Tag;
 use Auth;
+
 
 class QuestionsController extends Controller
 {
@@ -51,13 +53,25 @@ class QuestionsController extends Controller
             
         ]);
 
-        Question::create([
+        $tag_arr = explode(',', $request["tag"]);
+
+        $tag_ids = [];
+
+        foreach($tag_arr as $tag_name){
+            $tag = Tag::firstOrCreate(["nama_kategori" => $tag_name]);
+
+            $tag_ids[] = $tag->id;
+        }
+
+        $questions = Question::create([
             'judul'=>$request->judul,
             'isi'=>$request->isi,
             'tanggal_dibuat'=>$request->tanggal_dibuat,
             'tanggal_diperbarui'=>$request->tanggal_diperbarui,
             'user_id' => Auth::id()
         ]);
+
+        $questions->tags()->sync($tag_ids);
 
         return redirect('/pertanyaan');
     }
@@ -73,7 +87,7 @@ class QuestionsController extends Controller
         $questions = Question::find($id);
 
         $answer = $questions->jawaban;
-        
+
         return view('questions.show', compact('questions','answer'));
     }
 
@@ -123,7 +137,14 @@ class QuestionsController extends Controller
      */
     public function destroy($id)
     {
+
         $questions = Question::find($id);
+
+        // $answer = $questions->jawaban;
+        
+
+        // $hapus = \DB::table('answers')->where('id', $answer)->delete();
+
         $questions->delete();
         return redirect('/pertanyaan');
     }

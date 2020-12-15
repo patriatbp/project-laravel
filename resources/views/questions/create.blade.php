@@ -21,6 +21,14 @@
                 </div>
             @enderror
 
+            <label for="tag">Kategori</label>
+            <input type="text" name="tag" id="tag" class="form-control">
+            @error('tag')
+                <div class="alert alert-danger">
+                    {{$message}}
+                </div>
+            @enderror
+
             <label for="tanggal_dibuat">Tanggal Dibuat</label>
             <input type="date" name="tanggal_dibuat" id="tanggal_dibuat" class="form-control" style="width: auto;" value ="<?php echo date('Y-m-d') ?>">
             @error('tanggal_dibuat')

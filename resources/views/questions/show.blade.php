@@ -10,6 +10,10 @@
     </div>
 </div>
  <p>{{$questions->created_at}} || {{$questions->penulis->name}} </p>
+ <h3>Tags : </h3>
+ @foreach ($questions->tags as $tag)
+     <button class="btn btn-primary"> {{$tag->nama_kategori}} </button>
+ @endforeach
 
  <h3>Jawaban</h3>
     <div class="container overflow-auto" style="height: 300px; padding-top:10px;">
