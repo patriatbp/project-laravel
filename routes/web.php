@@ -32,6 +32,8 @@ Route::get('/', function () {
 Route::resource('pertanyaan', 'QuestionsController');
 Auth::routes();
 
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('user', 'UserController');

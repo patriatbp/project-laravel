@@ -1,28 +1,28 @@
 @extends('templates.master')
 
 @section('content')
-<form action="/profiles" method="POST">
+<form action="/profile" method="POST">
     @csrf
       <div class="form-group">
-          <label for="judul">Nama Lengkap</label>
-          <input type="text" name="judul" id="judul" class="form-control">
-          @error('judul')
+          <label for="nama_lengkap">Nama Lengkap</label>
+          <input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control" value="{{old('nama_lengkap')}}">
+          @error('nama_lengkap')
               <div class="alert alert-danger">
                   {{$message}}
               </div>
           @enderror
 
-          <label for="isi">Email</label>
-          <textarea name="isi" id="is" cols="30" rows="10" class="form-control"></textarea>
-          @error('isi')
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" cols="30" rows="10" class="form-control" value="{{old('email')}}">
+          @error('email')
               <div class="alert alert-danger">
                   {{$message}}
               </div>
           @enderror
 
-          <label for="tag">Photo</label>
-          <input type="text" name="tag" id="tag" class="form-control">
-          @error('tag')
+          <label for="photo">Photo</label>
+          <input type="text" name="photo" id="photo" class="form-control" value="{{old('photo')}}">
+          @error('photo')
               <div class="alert alert-danger">
                   {{$message}}
               </div>

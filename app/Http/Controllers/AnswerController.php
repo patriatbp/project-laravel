@@ -90,11 +90,11 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Request $request)
+    public function destroy($id)
     {
         $answer = Answer::find($id);
         $answer->delete();
 
-        return redirect()->action('QuestionsController@show', ['pertanyaan' => $request["questions_id"]]);
+        return redirect()->back();
     }
 }

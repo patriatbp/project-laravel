@@ -15,7 +15,7 @@ class QuestionsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
     }
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = Question::all();
+        $questions = Question::latest()->get();
         return view('questions.index', compact('questions'));
     }
 

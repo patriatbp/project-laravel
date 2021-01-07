@@ -1,7 +1,26 @@
 @extends('templates.master')
 
 @section('content')
-    <a href="/pertanyaan/create" class="btn btn-primary" style="margin-bottom: 10px">Tanyakan Sesuatu</a>
+<a href="/pertanyaan/create" class="btn btn-primary" style="margin-bottom: 10px">Tanyakan Sesuatu</a>
+<div class="row">
+    @forelse ($questions as $key=>$value)
+    <div class="col-md-4"  style="padding-bottom: 20px;">
+        <div class="card md-3">
+            <div class="card">
+                <div class="card-body">
+                    <p> <a href="/pertanyaan/{{$value->id}}">{{$value->judul}} </a></p>
+                    {{$value->created_at->diffforHumans()}}
+                </div>
+            </div>
+        </div>
+    </div>
+   
+        
+    @empty
+        
+    @endforelse
+</div>
+    {{-- <a href="/pertanyaan/create" class="btn btn-primary" style="margin-bottom: 10px">Tanyakan Sesuatu</a>
     <table class="table">
         <thead class="thead-light">
         <tr>
@@ -37,8 +56,8 @@
                 </tr>  
             @endforelse              
         </tbody>
-    </table>    
-@endsection
+    </table> --}}   
+@endsection 
 
 @push('scripts')
     

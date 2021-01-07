@@ -51,8 +51,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
 
-                <a class="collapse-item" href="utilities-color.html">View</a>
-                <a class="collapse-item" href="utilities-border.html">Tambah</a>
+                <a class="collapse-item" href="/pertanyaan">View</a>
+                <a class="collapse-item" href="/pertanyaan/create">Tambah</a>
         </div>
     </li>
 

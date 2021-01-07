@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use DB;
 use App\User;
+use App\Profile;
 use Auth;
 
 class ProfileController extends Controller
@@ -47,6 +48,16 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
+       $validate = Validator::make($request->all(), [
+           'nama_lengkap' => 'required|min:5|string',
+           'email' => 'required|email',
+           'photo' => 'required|nullable',
+       ]);
+
+       if ($validate->fails()) {
+        return redirect()->back()->withErrors($validate)->withInput();
+        }
+
         $profile = Profile::create([
             "nama_lengkap" => $request["nama_lengkap"],
             "email" => $request["email"],
